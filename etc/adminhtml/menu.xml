@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Blog
+ * 
+ * @author Slava Yurthev
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<update id="SY::core"
+			 title="Slava Yurthev"
+			 module="Magento_Backend"
+			 sortOrder="9999"
+			 resource="Magento_Backend::content" />
+		<update id="SY::developer"
+			 title="Developer"
+			 module="Magento_Backend" 
+			 sortOrder="1000"
+			 parent="SY::core"
+			 resource="Magento_Backend::content" />
+		<update id="SY::developer_developer"
+			 title="Developer"
+			 module="Magento_Backend" 
+			 sortOrder="1000"
+			 parent="SY::developer"
+			 action="adminhtml/system_config/edit/section/sy_developer/"
+			 resource="Magento_Backend::content" />
+		<add id="SY_Blog::section"
+			 title="Blog"
+			 module="SY_Blog" 
+			 sortOrder="0"
+			 parent="SY::core"
+			 resource="SY_Blog::section" />
+		<add id="SY_Blog::articles"
+			 title="Articles"
+			 module="SY_Blog" 
+			 sortOrder="0"
+			 parent="SY_Blog::section"
+			 action="sy_blog/articles"
+			 resource="SY_Blog::articles" />
+		<add id="SY_Blog::configuration"
+			 title="Configuration"
+			 module="SY_Blog" 
+			 sortOrder="10000"
+			 parent="SY_Blog::section"
+			 action="adminhtml/system_config/edit/section/sy_blog/"
+			 resource="SY_Blog::configuration" />
+	</menu>
+</config>

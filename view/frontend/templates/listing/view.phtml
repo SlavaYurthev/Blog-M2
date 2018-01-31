@@ -1,0 +1,18 @@
+<?php $item = $this->getItem(); ?>
+<article>
+	<div class="item-title">
+		<h1><?php echo $item->getTitle(); ?></h1>
+	</div>
+	<div class="item-datetime">
+		<?php echo date("d F Y", strtotime($item->getCreatedAt())); ?>
+	</div>
+	<div class="item-image">
+		<img src="<?php echo $item->getImageUrl(); ?>">
+	</div>
+	<div class="item-description">
+		<?php echo $item->getDescription(); ?>
+	</div>
+	<div class="item-text">
+		<?php echo $this->format($item->getText()); ?>
+	</div>
+</article>
