@@ -6,12 +6,11 @@
 	<div class="item-datetime">
 		<?php echo date("d F Y", strtotime($item->getCreatedAt())); ?>
 	</div>
-	<div class="item-image">
-		<img src="<?php echo $item->getImageUrl(); ?>">
-	</div>
-	<div class="item-description">
-		<?php echo $item->getDescription(); ?>
-	</div>
+	<?php if($item->hasImage()): ?>
+		<div class="item-image">
+			<img src="<?php echo $item->getImageUrl(); ?>">
+		</div>
+	<?php endif; ?>
 	<div class="item-text">
 		<?php echo $this->format($item->getText()); ?>
 	</div>

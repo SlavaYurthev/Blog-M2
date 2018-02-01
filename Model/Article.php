@@ -49,9 +49,14 @@ class Article extends AbstractModel {
 			}
 		}
 	}
-	public function getImageUrl(){
+	public function hasImage(){
 		if((bool)$this->getData('image') !== false &&
 			is_file($this->directoryList->getRoot().$this->getData('image'))){
+			return true;
+		}
+	}
+	public function getImageUrl(){
+		if($this->hasImage()){
 			return $this->getData('image');
 		}
 		else{
@@ -75,6 +80,7 @@ class Article extends AbstractModel {
 		} catch (\Exception $e) {}
 		$string = ltrim($string, "-");
 		$string = rtrim($string, "-");
+		$string .= $this->helper->getConfigValue('articles/format');
 		return $string;
 	}
 	public function getUrl(){
@@ -87,12 +93,9 @@ class Article extends AbstractModel {
 		if($this->helper->getConfigValue(
 				'articles/url_key', 
 				$this->storeManager->getStore()->getData('store_id')
-			) == "1"){
+			) == "1" && (bool)$this->getData('url_key') !== false){
 			$url = rtrim($url, '/').'/';
-			if((bool)$this->getData('url_key') !== false){
-				$url .= urlencode($this->getData('url_key'));
-				$url .= '.html';
-			}
+			$url .= $this->getData('url_key');
 		}
 		return $url;
 	}

@@ -31,10 +31,16 @@ class View extends Action {
 				$this->_forward('index', 'noroute', 'cms');
 			}
 			else{
-				$this->_coreRegistry->register('article', $model);
-				return $this->resultFactory->create(
-						\Magento\Framework\Controller\ResultFactory::TYPE_PAGE
-					);
+				$urlInterface = $this->_objectManager->get('Magento\Framework\UrlInterface');
+				if($urlInterface->getCurrentUrl() != $model->getUrl()){
+					$this->_forward('index', 'noroute', 'cms');
+				}
+				else{
+					$this->_coreRegistry->register('article', $model);
+					return $this->resultFactory->create(
+							\Magento\Framework\Controller\ResultFactory::TYPE_PAGE
+						);
+				}
 			}
 		}
 		else{

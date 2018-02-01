@@ -12,7 +12,7 @@
 						<?php echo date("d F Y", strtotime($item->getCreatedAt())); ?>
 					</div>
 					<div class="short-description">
-						<?php echo $this->format($item->getShortDescription()); ?>
+						<?php echo $this->format($item->getDescription()); ?>
 					</div>
 					<div class="actions">
 						<a href="<?php echo $item->getUrl(); ?>" class="btn"><?php echo __('Read More'); ?></a>

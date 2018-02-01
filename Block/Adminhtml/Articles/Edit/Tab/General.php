@@ -81,17 +81,6 @@ class General extends Generic implements TabInterface {
 			]
 		);
 		$fieldset->addField(
-			'short_description',
-			'editor',
-			[
-				'name' => 'short_description',
-				'label'	=> __('Short Description'),
-				'required' => true,
-				'style' => 'height: 15em; width: 100%;',
-				'config' => $this->_wysiwygConfig->getConfig()
-			]
-		);
-		$fieldset->addField(
 			'description',
 			'editor',
 			[
@@ -119,7 +108,9 @@ class General extends Generic implements TabInterface {
 			[
 				'name' => 'url_key',
 				'label'	=> __('Url Key'),
-				'required' => false
+				'required' => false,
+				'class' => 'validate-identifier',
+				'note' => __('Leave empty to auto-generate')
 			]
 		);
 		$fieldset->addField(
